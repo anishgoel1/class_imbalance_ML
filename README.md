@@ -13,4 +13,7 @@ https://github.com/pytorch/pytorch/blob/279238f0b81dce43636ebc8c7b1c45cc98c7a60d
 CVAE: https://linuxtut.com/en/a856971647ba2390f5fe/
 
 
+Rand models : https://github.com/kuangliu/pytorch-cifar
+
+
 
