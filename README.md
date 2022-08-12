@@ -15,5 +15,7 @@ CVAE: https://linuxtut.com/en/a856971647ba2390f5fe/
 
 Rand models : https://github.com/kuangliu/pytorch-cifar
 
+2 layer conv + gen: https://github.com/yunjey/pytorch-tutorial
+
 
 
