@@ -17,5 +17,7 @@ Rand models : https://github.com/kuangliu/pytorch-cifar
 
 2 layer conv + gen: https://github.com/yunjey/pytorch-tutorial
 
+cgan: https://github.com/arturml/mnist-cgan
+
 
 
