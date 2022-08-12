@@ -1,5 +1,5 @@
 # The Class Imbalance Problem In Neural Networks
-This repository includes the code that reproduces the results in our work involving testing a variety of resampling techniques across multiple computer vision benchmarks to provide insight into deep learning models. 
+This repository includes the code that reproduces the results in our work involving testing a variety of resampling techniques across multiple computer vision benchmarks to provide insight into class imbalance and deep learning. 
 
 
 Insert Full Paper Name here 
