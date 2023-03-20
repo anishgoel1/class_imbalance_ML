@@ -1,4 +1,3 @@
-
 import torch
 from torch.nn import Module
 import torchvision.datasets as datasets
@@ -43,16 +42,10 @@ params = {'legend.fontsize': 14,
 matplotlib.rcParams.update(params)
 
 
-# In[ ]:
-
-
 if torch.cuda.is_available():
     print("life is good")
 
 device = torch.device("cuda")
-
-
-# In[ ]:
 
 
 trainloader_collection = [
@@ -70,9 +63,6 @@ classes = ('plane', 'car', 'bird', 'cat',
 output_size_network = len(classes)
 
 epochs=150
-
-
-# In[ ]:
 
 
 class BasicBlock(nn.Module):
@@ -219,14 +209,7 @@ model12 = ResNet18()
 model12 = nn.DataParallel(model12)
 model12 = model12.to(device)
 
-
-# In[ ]:
-
-
 model = [[model1, model2, model3], [model4, model5, model6], [model7, model8, model9], [model10, model11, model12]]
-
-
-# In[ ]:
 
 
 criterion = nn.CrossEntropyLoss()
@@ -247,9 +230,6 @@ optimizer = [[optimizer1, optimizer2, optimizer3], [optimizer4, optimizer5, opti
 
 sampling_methods = [0, 1, 2, 3]
 settings = [0, 1, 2]
-
-
-# In[ ]:
 
 
 train_loss_hist = []
@@ -311,14 +291,7 @@ for sampling_method in zip(sampling_methods):
             print('Finished Training for setting', setting) 
 
 
-# In[ ]:
-
-
 model_updated = [[model1, model2, model3], [model4, model5, model6], [model7, model8, model9], [model10, model11, model12]]
-
-
-# In[ ]:
-
 
 global_accuracy = []
 test_loss_hist = []
@@ -375,10 +348,6 @@ for sampling_method in zip(sampling_methods):
             model_seed_accuracy = 100 * float(correct_count) / total_pred[classname]
             class_accuracy_model.append(model_seed_accuracy)
 
-
-# In[ ]:
-
-
 print('-------------')
 print('SAMPLER: NONE')
 print('-------------')
@@ -408,9 +377,6 @@ print('-------------')
 print('Test Loss S1: {:.3f}'.format(test_loss_hist[9]))
 print('Test Loss S2: {:.3f}'.format(test_loss_hist[10]))
 print('Test Loss S3: {:.3f}'.format(test_loss_hist[11]))
-
-
-# In[ ]:
 
 
 print('-------------')
@@ -443,25 +409,13 @@ print('Test Accuracy S1: {:.3f}%'.format(global_accuracy[9]))
 print('Test Accuracy S2: {:.3f}%'.format(global_accuracy[10]))
 print('Test Accuracy S3: {:.3f}%'.format(global_accuracy[11]))
 
-
-# In[ ]:
-
-
 class_accuracy_model = np.array_split(class_accuracy_model, 12)
 class_accuracy_model
-
-
-# In[ ]:
-
 
 slices = [6000, 9010, 1090, 6000, 9010, 1090, 6000, 9010, 1090, 6000, 9010, 1090]
 
 def imbalance_slicer(mylist):
     return [mylist[sum(slices[:i]):sum(slices[:i+1])] for i in range(len(slices))]
-
-
-# In[ ]:
-
 
 pred_list = [item for sublist in pred_list for item in sublist]
 labels_list = [item for sublist in labels_list for item in sublist]
@@ -497,10 +451,6 @@ labels_s9 = imbalance_slicer(labels_list)[8]
 labels_s10 = imbalance_slicer(labels_list)[9]
 labels_s11 = imbalance_slicer(labels_list)[10]
 labels_s12 = imbalance_slicer(labels_list)[11]
-
-
-# In[ ]:
-
 
 pred_list = [[pred_model1, pred_model2, pred_model3], [pred_model4, pred_model5, pred_model6], 
              [pred_model7, pred_model8, pred_model9], [pred_model10, pred_model11, pred_model12]]
@@ -556,10 +506,6 @@ for sampling_method in zip(sampling_methods):
         rec_macro = recall_score(labels_list[sampling_method][setting], pred_list[sampling_method][setting], average='macro')
         rec_micro_list.append(rec_micro)
         rec_macro_list.append(rec_macro)
-
-
-# In[ ]:
-
 
 metrics_list = [f1_micro_list, f1_macro_list, gmean_micro_list, gmean_macro_list, bac_list, bac_adj_list, sens_micro_list, 
                 sens_macro_list, spec_micro_list, spec_macro_list,
